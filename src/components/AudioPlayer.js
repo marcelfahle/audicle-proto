@@ -15,6 +15,21 @@ const AudioWrapper = styled.div`
   background-color: ${ props => props.maximized ? 'rgba(0,0,0,0.7)' : '#fff' };
   width: 100%;
   height: ${ props => props.height }px;
+  p {
+    font-weight: bold;
+  }
+
+  &.maximized {
+    p {
+      color: white;
+    }  
+  }
+  &.minimized {
+    p {
+      color: black;
+    }  
+    
+  }
 `;
 
 
@@ -38,7 +53,7 @@ class AudioPlayer extends React.Component {
             onClick={ this.props.toggleView }  
             height={h}
             maximized={ this.props.maximized }
-            className=""
+            className={ this.props.maximized ? 'maximized' : 'minimized'}
           >
             <p>
               { currentTitle } 
