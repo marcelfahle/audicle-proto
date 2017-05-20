@@ -46,8 +46,8 @@ const PostTitle = styled.h5`
   color: #333;
   font-weight: 400;
   max-width: 75%;
+  margin: 0;
   margin-left: 24px;
-  margin-bottom: 0px;
   font-family: 'Open Sans', sans-serif;
 `;
 
