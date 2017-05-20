@@ -1,4 +1,5 @@
 import { createPost } from './../posts/actions';
+import { push } from 'react-router-redux';
 
 export const SUBMIT_URL = 'SUBMIT_URL';
 export const CHECK_URL = 'TEST_URL';
@@ -23,7 +24,6 @@ export const checkURL = ( url ) => {
 }
 
 export const parseURLStart = () => {
-  console.log('start parsing URL, should show Loading');
   return { type: PARSE_URL_START };
 }
 
@@ -45,6 +45,7 @@ export const parseURL = ( url ) => {
       const result =  JSON.parse( e.target.response );
       // TODO: check for errors
       dispatch( parseURLSuccess(result) );
+      dispatch( push('/login') );
       // don't create post. send to Polly first. :-)
       //dispatch( convertPostToAudio(result) );
       result['status'] = 'generating'

@@ -6,13 +6,14 @@ import { url } from './url/reducer';
 import { posts } from './posts/reducer';
 import { audioPlayer } from './audio_player/reducer';
 
-const rootReducer = combineReducers({
+// combined in index.js
+const rootReducer = {
   user,
   url,
   posts,
   audioPlayer,
   burgerMenu,
   form: formReducer
-});
+};
 export default rootReducer;
 
