@@ -1,0 +1,21 @@
+html, body {
+  height: 100%;
+}
+.App {
+  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  height: 100%;
+}
+#root {
+  position: relative;
+  margin: 0 auto;
+  height: 100%;
+}
+.container {
+  height: 100%;
+}
+#page-wrap, #outer-wrapper {
+  height: 100%;
+
+}
+
