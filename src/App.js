@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Route, BrowserRouter, Link, Redirect, Switch } from 'react-router-dom'
+import { Route, Redirect, Switch } from 'react-router-dom'
+import { ConnectedRouter } from 'connected-react-router'
 
 
 import { 
@@ -64,12 +65,12 @@ class App extends Component {
 
   render() {
     const {
-      authenticated 
+      authenticated
     } = this.props.user;
 
 
     return this.props.loading === true ? <h1>Loading</h1>: (
-      <BrowserRouter>
+      <ConnectedRouter history={this.props.history}>
           <div className="App">
             <div className="container">
               <Switch>
@@ -90,7 +91,7 @@ class App extends Component {
               </Switch>
             </div>
           </div>
-      </BrowserRouter>
+      </ConnectedRouter>
     );
   }
 }

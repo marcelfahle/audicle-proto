@@ -1,5 +1,5 @@
 import { createPost } from './../posts/actions';
-import { push } from 'react-router-redux';
+import { push } from 'connected-react-router'
 
 export const SUBMIT_URL = 'SUBMIT_URL';
 export const CHECK_URL = 'TEST_URL';
@@ -38,6 +38,7 @@ export const parseURLError = () => {
 export const parseURL = ( url ) => {
   return (dispatch) => {
     dispatch( parseURLStart() );
+
     const req = new XMLHttpRequest();
     req.open('POST', 'https://flqltqk8r4.execute-api.eu-west-1.amazonaws.com/dev/parseurl');
     req.setRequestHeader('Content-Type', 'application/json');
@@ -45,7 +46,10 @@ export const parseURL = ( url ) => {
       const result =  JSON.parse( e.target.response );
       // TODO: check for errors
       dispatch( parseURLSuccess(result) );
-      dispatch( push('/login') );
+
+      console.log("routing");
+      dispatch( push('/') );
+
       // don't create post. send to Polly first. :-)
       //dispatch( convertPostToAudio(result) );
       result['status'] = 'generating'
