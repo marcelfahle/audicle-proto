@@ -59,14 +59,14 @@ export const parseURL = ( url ) => {
       const cleanContent = sanitizeHtml(
         result.content, 
         { 
-          allowedTags: [ 'b', 'p'] ,
+          allowedTags: [ 'b'] ,
           nonTextTags: [ 'style', 'script', 'textarea', 'noscript', 'figcaption', 'figure' ]
         }
       ).substring(0, 1400);
       const title = `<s>${result.title}.</s>`;
       const close = cleanContent.substr(cleanContent.length - 4) === '</p>' ? '' : '</p>';
       const author = result.author ? `<s>by ${result.author}</s>` : '';
-      const ssml = `<speak>${title}${author}${cleanContent}${close}</speak>`
+      const ssml = `<speak>${title}${author}${cleanContent}</speak>`
       console.log("ssml", ssml);
       // TODO: check for errors
 
