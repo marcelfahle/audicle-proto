@@ -1,13 +1,17 @@
 export const LOAD_FILE = 'LOAD_FILE';
 export const LOAD_FILE_START = 'LOAD_FILE_START';
 export const TOGGLE_VIEW = 'TOGGLE_VIEW';
+export const PLAY = 'PLAY';
+export const PAUSE = 'PAUSE';
+export const STOP = 'STOP';
 
 
 export const loadFile = (file, title) => {
   return {
     type: LOAD_FILE,
     file,
-    title
+    title,
+    playStatus: "PLAYING"
   }
 }
 export const loadFileStart = (file, title) => {
@@ -18,6 +22,26 @@ export const loadFileStart = (file, title) => {
 export const toggleView = () => {
   return {
     type: TOGGLE_VIEW
+  }
+}
+
+export const play = () => {
+  return {
+    type: PLAY,
+    playStatus: "PLAYING"
+  }
+}
+
+export const pause = () => {
+  return {
+    type: PAUSE,
+    playStatus: "PAUSED"
+  }
+}
+export const stop = () => {
+  return {
+    type: STOP,
+    playStatus: "STOPPED"
   }
 }
 

@@ -121,7 +121,7 @@ export const convertPostToAudio = ( post, key ) => {
       console.log('start get duration');
       durReq.send();
     }
-    console.log('lets go', post);
+    console.log('lets go', post.ssml);
     req.send(JSON.stringify( {text: post.ssml }  ));
   }
 }

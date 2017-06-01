@@ -9,51 +9,50 @@ class AudiclePlayer extends React.Component {
       play: false
     }
 
-		this.playAudio = this.playAudio.bind(this);
+		this.onPressPlayPause = this.onPressPlayPause.bind(this);
   }
 
   componentDidMount() {
     console.log("player did mount");
   }	
 
-  componentWillReceiveProps( nextProps ) {
-    console.log("will receive", nextProps);
-  }
-
   componentDidUpdate( prevProps, prevState ) {
     console.log("did update"); 
-    if ( !this.player ) { return; }
-
-    const { src } = this.props;
-
-    if (src) {
-      if (prevProps.src !== this.props.src) {
-        this.player.load();
-      }
-      this.player.play();
-    } else {
-      this.player.pause();
-    }
-
   }
 
-	playAudio( e ) {
-    console.log(e, this.player);
+  onPressPlayPause( e ) {
     e.stopPropagation();
-    this.player.play();
+    this.togglePlayAudio();
+  }
+
+	togglePlayAudio() {
+    console.log(this.state.play, this.player);
+    if( this.state.play ) {
+      this.pauseAudio();
+    } else {
+      this.playAudio();
+    }
 	}
+
+  playAudio() {
+    this.player.play();
+    this.setState({play: true});
+  }
+  pauseAudio() {
+    this.player.pause();
+    this.setState({play: false});
+  }
 
   render() {
     return (
       <div>
         <audio 
           ref={ (player) => { this.player = player } }
-          autoPlay 
           preload="true">
 					<source src={this.props.src} />
 				</audio>
 
-				<button id="pButton" className="play" onClick={this.playAudio}>CLICK ME</button>	
+				<button id="pButton" className="play" onClick={this.onPressPlayPause}>CLICK ME</button>	
 
         <p>{ this.props.src }</p>
 

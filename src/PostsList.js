@@ -14,7 +14,7 @@ const PostsWrapper = styled.div`
   //max-width: 700px;
   margin: 0 auto;
   padding-top: 44px;
-  padding-bottom: 100px;
+  padding-bottom: 140px;
   //height: calc(100vh - 170px);
   //padding-bottom: 100px !important;
   //overflow-y: auto;
