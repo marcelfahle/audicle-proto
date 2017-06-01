@@ -12,7 +12,7 @@ const FormWrapper = styled.main`
 `;
 
 
-const AddLink = ({}) => (
+const AddLink = () => (
   <div>
     <Header>
       <BackButton to="/dashboard" className="button__back button__left" />

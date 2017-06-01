@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 
 import Menu from './../components/Menu';
 import PlusButton from './../components/PlusButton';
@@ -48,7 +47,7 @@ var styles = {
   bmOverlay: {
     background: 'rgba(0, 0, 0, 0.3)'
   }
-}
+};
 
 const mapStateToProps = (state) => {
   return {

@@ -51,12 +51,14 @@ const PostTitle = styled.h5`
   font-family: 'Open Sans', sans-serif;
 `;
 
+  /*
 const PostControls = styled.div`
   position: absolute;
   display: none !important;
   top: 10px;
   right: 10px;
 `;
+*/
 
 const PostDuration = styled.p`
   position: absolute;

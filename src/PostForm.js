@@ -43,7 +43,7 @@ const SubmitButton = styled.button`
 `
 
 
-
+  /*
 const validate = ( values ) => {
   // TODO: Do a regex here!
   // eslint-disable-next-line
@@ -53,6 +53,7 @@ const validate = ( values ) => {
   }
 }
 
+*/
 
 const renderInputField = ( field ) => (
   <div className="input-row">

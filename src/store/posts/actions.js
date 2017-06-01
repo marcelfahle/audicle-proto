@@ -63,34 +63,6 @@ export const removePost = (id) => {
 
 
 
-
-export const createPostStart = () => {
-  return { type: CREATE_POST_START };
-}
-export const createPostEnd = () => {
-  return { type: CREATE_POST_END };
-}
-export const createPost = ( post ) => {
-  return (dispatch, getState) => {
-    // TODO: wire that up properly, so we get all the 
-    // goddies from redux devtools, and proper status msg
-    dispatch(createPostStart());
-
-    post['createdAt'] = firebase.database.ServerValue.TIMESTAMP;
-
-    const userId = getState().user.user.uid;
-
-    const ref = database.ref(`posts/${userId}`);
-    const newPostKey = ref.push().key;
-    var updates = {};
-    updates[newPostKey] = post;
-    console.log('all the updates', updates);
-    ref.update(updates);
-    const key = Object.keys(updates)[0];
-    dispatch( convertPostToAudio( updates[key], key )  );
-  }
-}
-
 export const updatePost = ( post, key ) => {
   console.log('updating post', post);
   return (dispatch, getState) => {
@@ -108,42 +80,6 @@ export const updatePost = ( post, key ) => {
     console.log('key', key);
   }
 }
- //
-/*
- *
- * 1. parse and get text from parse  Lambda
- * 2. create the post with file status 'working on it' and unable to click
- * 3. AFTER creating the post (because we need the ID) dispatch polly post
- * 4. after polly is done, add polly infos to post and change status.
- *
- *
- * possible status values
- * generating
- * error    (user should be able to try again) 
- * ready
- */
-
-
-
-
-
-
-export const getDuration = ( file ) => {
-  return (dispatch) => {
-    
-  }
-}
-export const getDurationStart = () => {
-  return { type: GET_DURATION_START }
-}
-export const getDurationFailure = () => {
-  return { type: GET_DURATION_FAILURE }
-}
-export const getDurationSUCESS = () => {
-  return { type: GET_DURATION_SUCCESS }
-}
-
-
 
 
 
@@ -189,6 +125,81 @@ export const convertPostToAudio = ( post, key ) => {
     req.send(JSON.stringify( {text: post.ssml }  ));
   }
 }
+
+
+
+
+
+
+
+export const createPostStart = () => {
+  return { type: CREATE_POST_START };
+}
+export const createPostEnd = () => {
+  return { type: CREATE_POST_END };
+}
+export const createPost = ( post ) => {
+  return (dispatch, getState) => {
+    // TODO: wire that up properly, so we get all the 
+    // goddies from redux devtools, and proper status msg
+    dispatch(createPostStart());
+
+    post['createdAt'] = firebase.database.ServerValue.TIMESTAMP;
+
+    const userId = getState().user.user.uid;
+
+    const ref = database.ref(`posts/${userId}`);
+    const newPostKey = ref.push().key;
+    var updates = {};
+    updates[newPostKey] = post;
+    console.log('all the updates', updates);
+    ref.update(updates);
+    const key = Object.keys(updates)[0];
+    dispatch( convertPostToAudio( updates[key], key )  );
+  }
+}
+
+ //
+/*
+ *
+ * 1. parse and get text from parse  Lambda
+ * 2. create the post with file status 'working on it' and unable to click
+ * 3. AFTER creating the post (because we need the ID) dispatch polly post
+ * 4. after polly is done, add polly infos to post and change status.
+ *
+ *
+ * possible status values
+ * generating
+ * error    (user should be able to try again) 
+ * ready
+ */
+
+
+
+
+
+
+export const getDuration = ( file ) => {
+  return (dispatch) => {
+    
+  }
+}
+export const getDurationStart = () => {
+  return { type: GET_DURATION_START }
+}
+export const getDurationFailure = () => {
+  return { type: GET_DURATION_FAILURE }
+}
+export const getDurationSUCESS = () => {
+  return { type: GET_DURATION_SUCCESS }
+}
+
+
+
+
+
+
+
 
 
 
